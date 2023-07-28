@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap");
+
+//   // - Mobile: 375px
+// // - Desktop: 1440px
+
+// // ## Colors
+
+// // ### Primary
+
+$Light-red: hsl(0, 100%, 67%);
+$Orangey-yellow: hsl(39, 100%, 56%);
+$Green-teal: hsl(166, 100%, 37%);
+$Cobalt-blue: hsl(234, 85%, 45%);
+
+// // ## Gradients
+
+$Light-slate-blue: hsl(252, 100%, 67%); // (background)
+$Light-royal-blue: hsl(241, 81%, 54%); // (background)
+$Violet-blue: hsla(256, 72%, 46%, 1); // (circle)
+$Persian-blue: hsla(241, 72%, 46%, 0); // (circle)
+
+// // ### Neutral
+
+$White: hsl(0, 0%, 100%);
+$Pale-blue: hsl(221, 100%, 96%);
+$Light-lavender: hsl(241, 100%, 89%);
+$Dark-gray-blue: hsl(224, 30%, 27%);
+
+// // ### Notes
+
+// // Use transparency to get the colour variations necessary to match the design. Hint: look into using `hsla()`.
+
+// // ## Typography
+
+// // ### Body Copy
+
+// - Font size (paragraphs): 18px
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+html {
+    color-scheme: dark light;
+}
+
+body {
+    line-height: 1.15;
+    display: flex;
+    min-height: 100vh;
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+p {
+    font-size: 18px;
+}
+
+#container {
+    opacity: 1;
+    box-shadow: 2px 2px 20px 0px hsla(241, 100%, 89%, 0.5);
+    background: $White;
+    display: flex;
+    margin: auto;
+    max-width: 550px;
+    width: 100%;
+    border-radius: 20px;
+    transition:
+        opacity 0.5s ease-in-out,
+        transform 0.5s ease-in-out;
+    & > div {
+        flex: 1;
+    }
+}
+
+#result,
+#summary {
+    padding: 2rem 1.75rem;
+}
+
+#result {
+    gap: 1rem;
+    color: $Pale-blue;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background: linear-gradient($Light-slate-blue, $Light-royal-blue);
+    .heading {
+        color: $Light-lavender;
+    }
+    & .circle {
+        background: linear-gradient($Violet-blue, $Persian-blue);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        padding: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+        > span {
+            display: block;
+            &:nth-child(1) {
+                color: $White;
+                font-size: clamp(3rem, 2.6479rem + 1.5023vw, 4rem);
+            }
+            &:nth-child(2) {
+                font-size: 0.9rem;
+            }
+        }
+    }
+    > p {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-size: 0.9rem;
+        color: $Light-lavender;
+        gap: 1rem;
+        span {
+            font-size: 1.5rem;
+            color: $White;
+        }
+    }
+}
+
+#summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    .wrap-category {
+        margin-bottom: 1.25rem;
+    }
+    .category-container {
+        flex-wrap: wrap;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-radius: 10px;
+        gap: 1rem;
+
+        .category-score {
+            color: $Light-lavender;
+            span {
+                color: black;
+            }
+        }
+
+        &:nth-child(1) {
+            background-color: hsla(0, 100%, 67%, 0.1);
+            .category-name {
+                color: $Light-red;
+            }
+        }
+        &:nth-child(2) {
+            background-color: hsla(39, 100%, 56%, 0.1);
+            .category-name {
+                color: $Orangey-yellow;
+            }
+        }
+        &:nth-child(3) {
+            background-color: hsla(166, 100%, 37%, 0.1);
+            .category-name {
+                color: $Green-teal;
+            }
+        }
+        &:nth-child(4) {
+            background-color: hsla(234, 85%, 45%, 0.1);
+            .category-name {
+                color: $Cobalt-blue;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 0.75rem;
+        }
+
+        > span:nth-child(1) {
+            align-items: center;
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+    button {
+        font-size: 13px;
+        color: $White;
+        cursor: pointer;
+        background: $Dark-gray-blue;
+        border: none;
+        border-radius: 20px;
+        padding-block: 0.75rem;
+        transition: background 0.25s ease-in-out;
+        &:hover {
+            background: linear-gradient($Light-slate-blue, $Light-royal-blue);
+        }
+    }
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.medium {
+    font-weight: 700;
+}
+
+.light {
+    font-weight: 500;
+}
+
+@media (max-width: 440px) {
+    #container {
+        flex-direction: column;
+    }
+    #result {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+}
